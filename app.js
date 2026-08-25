@@ -10,6 +10,13 @@ Chart.defaults.font.family = "'Outfit', sans-serif";
 const gridConfig = { color: 'rgba(255, 255, 255, 0.04)' };
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // Check Authentication
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) {
+        window.location.href = 'login.html';
+        return;
+    }
+
     setupEventListeners();
     await fetchStudents();
 });
@@ -271,6 +278,14 @@ function closeViewModal() {
 }
 
 // -----------------------------------------
+// AUTHENTICATION & LOGOUT
+// -----------------------------------------
+function handleLogout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = 'login.html';
+}
+
+// -----------------------------------------
 // EVENT LISTENERS
 // -----------------------------------------
 function setupEventListeners() {
@@ -355,15 +370,38 @@ function setupEventListeners() {
         populateTable(students); // View all instead of top 15
     });
 
-    // Sidebar Navigation
+    // Sidebar Navigation & Smooth Scrolling
     const navItems = document.querySelectorAll('.sb-nav .nav-item');
     navItems.forEach(item => {
         item.addEventListener('click', (e) => {
+            e.preventDefault();
             navItems.forEach(nav => nav.classList.remove('active'));
             const target = e.target.closest('.nav-item');
-            if (target) target.classList.add('active');
+            if (target) {
+                target.classList.add('active');
+                
+                // Determine section based on text content
+                const sectionName = target.querySelector('.nav-label').textContent.trim();
+                let sectionId = '';
+                if (sectionName === 'Dashboard') sectionId = 'kpi-section';
+                else if (sectionName === 'Analytics') sectionId = 'analytics-section';
+                else if (sectionName === 'Students') sectionId = 'students-section';
+                
+                if (sectionId) {
+                    const sectionEl = document.getElementById(sectionId);
+                    if (sectionEl) {
+                        sectionEl.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }
         });
     });
+
+    // Logout
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', handleLogout);
+    }
 
     // Mobile Sidebar Toggle
     const mobileToggle = document.getElementById('mobileToggle');
