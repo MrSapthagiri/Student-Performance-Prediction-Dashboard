@@ -128,6 +128,30 @@ function mapLocalData(payload) {
 }
 
 // -----------------------------------------
+// DATASET UPLOAD
+// -----------------------------------------
+async function uploadDataset(file) {
+    if (!file) return;
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+        const response = await fetch(`${API_BASE}/upload`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (!response.ok) throw new Error('Failed to upload dataset');
+        const data = await response.json();
+        alert(`Success: ${data.message}. Loaded ${data.rows} rows.`);
+        await fetchStudents();
+    } catch (error) {
+        console.error('Error uploading dataset:', error);
+        alert('Failed to upload dataset. Check the console for details.');
+    }
+}
+
+// -----------------------------------------
 // DASHBOARD UPDATES
 // -----------------------------------------
 function updateDashboard() {
@@ -198,6 +222,55 @@ function closeModal() {
 }
 
 // -----------------------------------------
+// VIEW MODAL LOGIC
+// -----------------------------------------
+const viewModal = document.getElementById('viewStudentModal');
+
+function openViewModal(studentId) {
+    const student = students.find(s => s.id === studentId);
+    if (!student) return;
+
+    const detailsContainer = document.getElementById('viewStudentDetails');
+    detailsContainer.innerHTML = ''; // Clear previous
+
+    const fields = [
+        { label: 'Student ID', value: student.id },
+        { label: 'Name', value: student.name },
+        { label: 'Gender', value: student.raw.Gender || 'Unknown' },
+        { label: 'Age', value: student.raw.Age || 'Unknown' },
+        { label: 'Class', value: student.raw.Class || 'Unknown' },
+        { label: 'Attendance', value: `${student.attendance}%` },
+        { label: 'Study Hours', value: student.studyHours },
+        { label: 'Assignments (%)', value: student.assignments },
+        { label: 'Quiz Score', value: student.raw.Quiz_Score || 'Unknown' },
+        { label: 'Midterm Marks', value: student.raw.Midterm_Marks || 'Unknown' },
+        { label: 'Final Exam Marks', value: student.raw.Final_Exam_Marks || 'Unknown' },
+        { label: 'Internet Access', value: student.raw.Internet_Access || 'Unknown' },
+        { label: 'Parental Education', value: student.raw.Parental_Education || 'Unknown' },
+        { label: 'Extra Curricular', value: student.raw.Extra_Curricular || 'Unknown' },
+        { label: 'Sleep Hours', value: student.raw.Sleep_Hours || 'Unknown' },
+        { label: 'Previous Grade', value: student.raw.Previous_Grade || 'Unknown' },
+        { label: 'Predicted Performance', value: student.raw.Performance || 'Unknown' }
+    ];
+
+    fields.forEach(field => {
+        const group = document.createElement('div');
+        group.className = 'form-group';
+        group.innerHTML = `
+            <label>${field.label}</label>
+            <input type="text" value="${field.value}" readonly style="background: var(--bg); border: 1px dashed var(--border-2); color: var(--text-2);">
+        `;
+        detailsContainer.appendChild(group);
+    });
+
+    viewModal.showModal();
+}
+
+function closeViewModal() {
+    viewModal.close();
+}
+
+// -----------------------------------------
 // EVENT LISTENERS
 // -----------------------------------------
 function setupEventListeners() {
@@ -206,6 +279,22 @@ function setupEventListeners() {
     document.getElementById('closeModalBtn').addEventListener('click', closeModal);
     document.getElementById('cancelModalBtn').addEventListener('click', closeModal);
     
+    // View Modal buttons
+    document.getElementById('closeViewModalBtn').addEventListener('click', closeViewModal);
+    document.getElementById('doneViewModalBtn').addEventListener('click', closeViewModal);
+
+    // Upload Dataset
+    const uploadInput = document.getElementById('uploadDatasetInput');
+    const uploadBtn = document.getElementById('uploadDatasetBtn');
+    if (uploadBtn && uploadInput) {
+        uploadBtn.addEventListener('click', () => uploadInput.click());
+        uploadInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) uploadDataset(file);
+            e.target.value = ''; // Reset
+        });
+    }
+
     document.getElementById('saveStudentBtn').addEventListener('click', (e) => {
         e.preventDefault();
         if (!form.checkValidity()) {
@@ -237,6 +326,44 @@ function setupEventListeners() {
             populateTable(filtered);
         });
     }
+
+    // Topbar Actions
+    document.getElementById('filterBtn')?.addEventListener('click', () => alert('Filter logic will go here.'));
+    document.getElementById('notifBtn')?.addEventListener('click', () => alert('You have no new notifications.'));
+    document.getElementById('exportBtn')?.addEventListener('click', () => alert('Exporting data as CSV...'));
+
+    // Chart Filters
+    document.querySelectorAll('.card-actions .pill-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Remove active from siblings
+            Array.from(e.target.parentElement.children).forEach(c => c.classList.remove('active'));
+            e.target.classList.add('active');
+            // Logic to update chart data could go here
+        });
+    });
+
+    // Table controls
+    let sortAsc = false;
+    document.getElementById('sortByRisk')?.addEventListener('click', (e) => {
+        sortAsc = !sortAsc;
+        e.target.textContent = sortAsc ? 'Sort: Risk ↑' : 'Sort: Risk ↓';
+        const sorted = [...students].sort((a, b) => sortAsc ? a.predictedScore - b.predictedScore : b.predictedScore - a.predictedScore);
+        populateTable(sorted);
+    });
+
+    document.getElementById('viewAll')?.addEventListener('click', () => {
+        populateTable(students); // View all instead of top 15
+    });
+
+    // Sidebar Navigation
+    const navItems = document.querySelectorAll('.sb-nav .nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            navItems.forEach(nav => nav.classList.remove('active'));
+            const target = e.target.closest('.nav-item');
+            if (target) target.classList.add('active');
+        });
+    });
 
     // Mobile Sidebar Toggle
     const mobileToggle = document.getElementById('mobileToggle');
@@ -296,6 +423,7 @@ function populateTable(data) {
             <td><span class="badge ${riskClass}">${student.riskLevel}</span></td>
             <td><strong style="font-family:'JetBrains Mono',monospace">${student.predictedScore}</strong></td>
             <td>
+                <button class="tbl-action" style="background:rgba(16,185,129,0.1);color:#10b981;border-color:rgba(16,185,129,0.2)" onclick="openViewModal('${student.id}')">View</button>
                 <button class="tbl-action" onclick="openModal('edit', '${student.id}')">Edit</button>
                 <button class="tbl-action" style="background:rgba(244,63,94,0.1);color:#f43f5e;border-color:rgba(244,63,94,0.2)" onclick="deleteStudent('${student.id}')">Del</button>
             </td>

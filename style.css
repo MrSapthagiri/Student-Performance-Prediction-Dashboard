@@ -1203,4 +1203,12 @@ table.data-tbl {
     .page { padding: 16px; }
     .search-wrap { display: none; }
     .date-chip { display: none; }
+    .page-hero { flex-direction: column; align-items: flex-start; }
+    .hero-actions { width: 100%; flex-wrap: wrap; justify-content: flex-start; }
+    .btn { flex: 1 1 auto; justify-content: center; }
+}
+@media (max-width: 480px) {
+    .mini-stats { grid-template-columns: 1fr; }
+    .topbar-actions .icon-btn { display: none; }
+    .card-actions { flex-wrap: wrap; }
 }

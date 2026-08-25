@@ -26,7 +26,7 @@ A high-impact student performance prediction system built with Flask, Streamlit,
 ```bash
 cd student-dashboard
 python -m venv .venv
-.venv\\Scripts\\Activate.ps1
+.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -37,7 +37,7 @@ python training/train_model.py
 
 ## Start the Backend
 ```bash
-python backend/app.py
+# python backend/app.py
 ```
 
 ## Start the Dashboard

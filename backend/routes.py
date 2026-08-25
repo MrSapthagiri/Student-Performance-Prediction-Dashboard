@@ -340,3 +340,51 @@ def upload_dataset():
         })
     except Exception as exc:
         return jsonify({"error": str(exc)}), 500
+
+USERS_FILE = ROOT_DIR / "users.json"
+
+def _load_users():
+    if not USERS_FILE.exists():
+        return {}
+    with open(USERS_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def _save_users(users_data):
+    with open(USERS_FILE, "w", encoding="utf-8") as f:
+        json.dump(users_data, f, indent=4)
+
+@bp.route("/api/signup", methods=["POST"])
+def signup():
+    payload = request.get_json(silent=True) or {}
+    email = payload.get("email")
+    password = payload.get("password")
+    name = payload.get("name", "User")
+    
+    if not email or not password:
+        return jsonify({"error": "Email and password required"}), 400
+        
+    users = _load_users()
+    if email in users:
+        return jsonify({"error": "User already exists"}), 400
+        
+    users[email] = {
+        "name": name,
+        "password": password # In a real app, hash this!
+    }
+    _save_users(users)
+    return jsonify({"message": "User created successfully", "user": {"email": email, "name": name}}), 201
+
+@bp.route("/api/login", methods=["POST"])
+def login():
+    payload = request.get_json(silent=True) or {}
+    email = payload.get("email")
+    password = payload.get("password")
+    
+    if not email or not password:
+        return jsonify({"error": "Email and password required"}), 400
+        
+    users = _load_users()
+    if email not in users or users[email]["password"] != password:
+        return jsonify({"error": "Invalid email or password"}), 401
+        
+    return jsonify({"message": "Login successful", "user": {"email": email, "name": users[email]["name"]}}), 200

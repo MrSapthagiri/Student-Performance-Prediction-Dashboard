@@ -1,6 +1,6 @@
 flask==3.0.3
 pandas==2.2.3
-numpy==1.26.4
+numpy
 scikit-learn==1.5.2
 joblib==1.4.0
 sqlalchemy==2.0.40
