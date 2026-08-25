@@ -1,57 +1,92 @@
-# Student Performance Prediction Dashboard
+# AI-Powered Student Academic Success Prediction System
 
-A high-impact student performance prediction system built with Flask, Streamlit, SQLite, Plotly, and a Decision Tree classifier, now powered by a 100,000-record student dataset for richer analytics and stronger demonstrations.
-
-## Highlights
-- Upload and validate CSV datasets
-- Clean and preprocess data automatically
-- Train and save a decision tree classifier
-- Expose prediction endpoints through Flask
-- Visualize student analytics through Streamlit and Plotly
-- Store prediction history in SQLite
-- Work with a 100,000-record student dataset for high-volume analysis
-- Deliver a polished, enterprise-style dashboard experience
+This is a comprehensive AI/ML Student Academic Success Prediction System featuring authentication, student management, predictive analytics, and personalized recommendations.
 
 ## Project Structure
-- dataset/: sample and uploaded student datasets
-- model/: trained model artifacts and metrics
-- training/: model training script
-- backend/: Flask REST API
-- dashboard/: Streamlit dashboard pages
-- database/: SQLAlchemy models and SQLite database
-- utils/: preprocessing and chart helpers
-- tests/: regression tests for the preprocessing pipeline
 
-## Installation
-```bash
-cd student-dashboard
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
+The project is divided into a robust FastAPI backend and an interactive Streamlit frontend.
+
+```
+student-success-ai/
+├── backend/
+│   ├── app/
+│   │   ├── main.py        # FastAPI entry point
+│   │   ├── database.py    # Database connection setup
+│   │   ├── models/        # SQLAlchemy database models
+│   │   ├── schemas/       # Pydantic validation schemas
+│   │   ├── routes/        # API route definitions
+│   │   └── services/      # Business logic (e.g., authentication)
+│   └── requirements.txt   # Backend dependencies
+│
+├── frontend/
+│   ├── app.py             # Streamlit entry point
+│   ├── pages/             # Streamlit UI pages (Excel Import, etc.)
+│   └── requirements.txt   # Frontend dependencies
+│
+└── run.bat                # Automated startup script for Windows
 ```
 
-## Train the Model
+## Prerequisites
+
+Make sure you have Python installed (Python 3.9+ recommended). 
+
+## How to Run the Application
+
+The easiest way to start both the backend and frontend simultaneously on a Windows machine is to use the provided `run.bat` script.
+
+### Method 1: Using the provided `run.bat` script
+Simply double-click the `run.bat` file in the root directory, or run it from your command prompt/powershell:
 ```bash
-python training/train_model.py
+.\run.bat
+```
+This will automatically open two command prompts, one for the FastAPI backend and one for the Streamlit frontend. 
+- The Streamlit interface will be available at: **http://localhost:8501**
+- The FastAPI documentation will be available at: **http://localhost:8000/docs**
+
+### Method 2: Manual Startup
+
+If you prefer to start them manually, follow these steps:
+
+**1. Create and Activate a Virtual Environment (Recommended)**
+Open your terminal in the root project directory and run:
+```bash
+python -m venv venv
+```
+Then, activate the virtual environment:
+- On Windows:
+```bash
+venv\Scripts\activate
+```
+- On Mac/Linux:
+```bash
+source venv/bin/activate
 ```
 
-## Start the Backend
+**2. Install Dependencies**
+With the virtual environment activated, install the required packages:
 ```bash
-# python backend/app.py
+pip install -r backend/requirements.txt
+pip install -r frontend/requirements.txt
 ```
 
-## Start the Dashboard
+**3. Start the FastAPI Backend**
+Open a terminal, navigate to the `backend` folder, and start the Uvicorn server:
 ```bash
-streamlit run dashboard/streamlit_app.py
+cd backend
+uvicorn app.main:app --reload --port 8000
 ```
 
-## Start Both Together
+**4. Start the Streamlit Frontend**
+Open a *second* terminal, navigate to the `frontend` folder, and start Streamlit:
 ```bash
-python run_app.py
+cd frontend
+streamlit run app.py --server.port 8501
 ```
 
-## Verification
-The project has been verified with:
-- model training via training/train_model.py
-- Flask health and prediction endpoint checks
-- preprocessing regression tests via pytest
+## First Steps
+
+Once the application is running:
+1. Open your browser to **http://localhost:8501**
+2. Navigate to the **Excel Data Import** tab on the left sidebar.
+3. Upload your existing student records Excel file. 
+4. The system will automatically parse the data, map the columns, and populate the database to fuel the ML predictions!
