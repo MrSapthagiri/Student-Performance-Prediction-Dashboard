@@ -1,0 +1,113 @@
+module_id,module_code,module_name,department,semester,credits,max_marks,pass_marks
+1,AIDS_MA101,Engineering Mathematics I,AI & Data Science,1,4,100,40
+2,AIDS_MA201,Engineering Mathematics II,AI & Data Science,2,4,100,40
+3,AIDS_PH101,Engineering Physics,AI & Data Science,1,3,100,40
+4,AIDS_CH101,Engineering Chemistry,AI & Data Science,1,3,100,40
+5,AIDS_EN101,Technical English,AI & Data Science,1,2,100,40
+6,AIDS_EN201,Professional Communication,AI & Data Science,2,2,100,40
+7,ADS301,Python Programming,AI & Data Science,3,4,100,40
+8,ADS302,Data Structures,AI & Data Science,3,4,100,40
+9,ADS401,Machine Learning,AI & Data Science,4,4,100,40
+10,ADS402,Deep Learning,AI & Data Science,4,4,100,40
+11,ADS501,Artificial Intelligence,AI & Data Science,5,4,100,40
+12,ADS502,Natural Language Processing,AI & Data Science,5,3,100,40
+13,ADS601,Computer Vision,AI & Data Science,6,3,100,40
+14,ADS602,Data Analytics,AI & Data Science,6,4,100,40
+15,ADS701,Cloud Computing,AI & Data Science,7,3,100,40
+16,ADS702,Statistics,AI & Data Science,7,4,100,40
+17,CSE_MA101,Engineering Mathematics I,Computer Science Engineering,1,4,100,40
+18,CSE_MA201,Engineering Mathematics II,Computer Science Engineering,2,4,100,40
+19,CSE_PH101,Engineering Physics,Computer Science Engineering,1,3,100,40
+20,CSE_CH101,Engineering Chemistry,Computer Science Engineering,1,3,100,40
+21,CSE_EN101,Technical English,Computer Science Engineering,1,2,100,40
+22,CSE_EN201,Professional Communication,Computer Science Engineering,2,2,100,40
+23,CSE301,Data Structures,Computer Science Engineering,3,4,100,40
+24,CSE302,Database Management Systems,Computer Science Engineering,3,4,100,40
+25,CSE401,Operating Systems,Computer Science Engineering,4,4,100,40
+26,CSE402,Computer Networks,Computer Science Engineering,4,4,100,40
+27,CSE501,Software Engineering,Computer Science Engineering,5,3,100,40
+28,CSE502,Web Technology,Computer Science Engineering,5,3,100,40
+29,CSE601,Machine Learning,Computer Science Engineering,6,4,100,40
+30,CSE602,Cloud Computing,Computer Science Engineering,6,3,100,40
+31,CSE701,Artificial Intelligence,Computer Science Engineering,7,3,100,40
+32,CSE702,Cyber Security,Computer Science Engineering,7,3,100,40
+33,IT_MA101,Engineering Mathematics I,Information Technology,1,4,100,40
+34,IT_MA201,Engineering Mathematics II,Information Technology,2,4,100,40
+35,IT_PH101,Engineering Physics,Information Technology,1,3,100,40
+36,IT_CH101,Engineering Chemistry,Information Technology,1,3,100,40
+37,IT_EN101,Technical English,Information Technology,1,2,100,40
+38,IT_EN201,Professional Communication,Information Technology,2,2,100,40
+39,IT301,Data Structures,Information Technology,3,4,100,40
+40,IT302,Database Management Systems,Information Technology,3,4,100,40
+41,IT401,Operating Systems,Information Technology,4,4,100,40
+42,IT402,Computer Networks,Information Technology,4,4,100,40
+43,IT501,Web Technology,Information Technology,5,3,100,40
+44,IT502,Software Engineering,Information Technology,5,3,100,40
+45,IT601,Data Analytics,Information Technology,6,4,100,40
+46,IT602,Cloud Computing,Information Technology,6,3,100,40
+47,IT701,Information Security,Information Technology,7,3,100,40
+48,IT702,Mobile Computing,Information Technology,7,3,100,40
+49,ECE_MA101,Engineering Mathematics I,Electronics & Communication Engineering,1,4,100,40
+50,ECE_MA201,Engineering Mathematics II,Electronics & Communication Engineering,2,4,100,40
+51,ECE_PH101,Engineering Physics,Electronics & Communication Engineering,1,3,100,40
+52,ECE_CH101,Engineering Chemistry,Electronics & Communication Engineering,1,3,100,40
+53,ECE_EN101,Technical English,Electronics & Communication Engineering,1,2,100,40
+54,ECE_EN201,Professional Communication,Electronics & Communication Engineering,2,2,100,40
+55,ECE301,Electronic Circuits,Electronics & Communication Engineering,3,4,100,40
+56,ECE302,Signals & Systems,Electronics & Communication Engineering,3,4,100,40
+57,ECE401,Digital Signal Processing,Electronics & Communication Engineering,4,4,100,40
+58,ECE402,Communication Systems,Electronics & Communication Engineering,4,4,100,40
+59,ECE501,VLSI Design,Electronics & Communication Engineering,5,4,100,40
+60,ECE502,Embedded Systems,Electronics & Communication Engineering,5,3,100,40
+61,ECE601,Wireless Communication,Electronics & Communication Engineering,6,3,100,40
+62,ECE602,Antenna Design,Electronics & Communication Engineering,6,3,100,40
+63,ECE701,IoT Systems,Electronics & Communication Engineering,7,3,100,40
+64,ECE702,Robotics,Electronics & Communication Engineering,7,3,100,40
+65,EEE_MA101,Engineering Mathematics I,Electrical & Electronics Engineering,1,4,100,40
+66,EEE_MA201,Engineering Mathematics II,Electrical & Electronics Engineering,2,4,100,40
+67,EEE_PH101,Engineering Physics,Electrical & Electronics Engineering,1,3,100,40
+68,EEE_CH101,Engineering Chemistry,Electrical & Electronics Engineering,1,3,100,40
+69,EEE_EN101,Technical English,Electrical & Electronics Engineering,1,2,100,40
+70,EEE_EN201,Professional Communication,Electrical & Electronics Engineering,2,2,100,40
+71,EEE301,Circuit Theory,Electrical & Electronics Engineering,3,4,100,40
+72,EEE302,Electromagnetic Fields,Electrical & Electronics Engineering,3,4,100,40
+73,EEE401,Power Systems,Electrical & Electronics Engineering,4,4,100,40
+74,EEE402,Control Systems,Electrical & Electronics Engineering,4,4,100,40
+75,EEE501,Electrical Machines,Electrical & Electronics Engineering,5,4,100,40
+76,EEE502,Power Electronics,Electrical & Electronics Engineering,5,3,100,40
+77,EEE601,Renewable Energy,Electrical & Electronics Engineering,6,3,100,40
+78,EEE602,High Voltage Engineering,Electrical & Electronics Engineering,6,3,100,40
+79,EEE701,Smart Grid Technology,Electrical & Electronics Engineering,7,3,100,40
+80,EEE702,Electric Vehicles,Electrical & Electronics Engineering,7,3,100,40
+81,ME_MA101,Engineering Mathematics I,Mechanical Engineering,1,4,100,40
+82,ME_MA201,Engineering Mathematics II,Mechanical Engineering,2,4,100,40
+83,ME_PH101,Engineering Physics,Mechanical Engineering,1,3,100,40
+84,ME_CH101,Engineering Chemistry,Mechanical Engineering,1,3,100,40
+85,ME_EN101,Technical English,Mechanical Engineering,1,2,100,40
+86,ME_EN201,Professional Communication,Mechanical Engineering,2,2,100,40
+87,ME301,Thermodynamics,Mechanical Engineering,3,4,100,40
+88,ME302,Fluid Mechanics,Mechanical Engineering,3,4,100,40
+89,ME401,Manufacturing Technology,Mechanical Engineering,4,4,100,40
+90,ME402,Strength of Materials,Mechanical Engineering,4,4,100,40
+91,ME501,Heat Transfer,Mechanical Engineering,5,4,100,40
+92,ME502,Machine Design,Mechanical Engineering,5,3,100,40
+93,ME601,CAD/CAM,Mechanical Engineering,6,3,100,40
+94,ME602,Automobile Engineering,Mechanical Engineering,6,3,100,40
+95,ME701,Robotics,Mechanical Engineering,7,3,100,40
+96,ME702,Industrial Engineering,Mechanical Engineering,7,3,100,40
+97,CE_MA101,Engineering Mathematics I,Civil Engineering,1,4,100,40
+98,CE_MA201,Engineering Mathematics II,Civil Engineering,2,4,100,40
+99,CE_PH101,Engineering Physics,Civil Engineering,1,3,100,40
+100,CE_CH101,Engineering Chemistry,Civil Engineering,1,3,100,40
+101,CE_EN101,Technical English,Civil Engineering,1,2,100,40
+102,CE_EN201,Professional Communication,Civil Engineering,2,2,100,40
+103,CE301,Structural Analysis,Civil Engineering,3,4,100,40
+104,CE302,Surveying,Civil Engineering,3,4,100,40
+105,CE401,Geotechnical Engineering,Civil Engineering,4,4,100,40
+106,CE402,Hydraulics,Civil Engineering,4,4,100,40
+107,CE501,Concrete Technology,Civil Engineering,5,4,100,40
+108,CE502,Transportation Engineering,Civil Engineering,5,3,100,40
+109,CE601,Environmental Engineering,Civil Engineering,6,3,100,40
+110,CE602,Estimation & Costing,Civil Engineering,6,3,100,40
+111,CE701,Construction Management,Civil Engineering,7,3,100,40
+112,CE702,Earthquake Engineering,Civil Engineering,7,3,100,40

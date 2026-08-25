@@ -1,0 +1,101 @@
+{
+  "training_date": "2026-08-25T19:34:19.673403",
+  "dataset_size": 1000,
+  "feature_count": 14,
+  "feature_names": [
+    "previous_gpa",
+    "previous_percentage",
+    "internal_marks",
+    "assignment_score",
+    "quiz_score",
+    "midterm_score",
+    "attendance_percentage",
+    "study_hours_per_day",
+    "assignment_completion_rate",
+    "online_learning_hours",
+    "library_usage",
+    "participation_score",
+    "department_encoded",
+    "gender_encoded"
+  ],
+  "best_risk_model": "XGBoost",
+  "best_score_model": "Random Forest Regressor",
+  "best_pass_model": "Logistic Regression",
+  "model_version": "1.0",
+  "results": {
+    "risk_classification": {
+      "Logistic Regression": {
+        "model": "Logistic Regression",
+        "accuracy": 0.905,
+        "precision_weighted": 0.9062,
+        "recall_weighted": 0.905,
+        "f1_weighted": 0.9051,
+        "roc_auc": 0.9857
+      },
+      "Decision Tree": {
+        "model": "Decision Tree",
+        "accuracy": 0.95,
+        "precision_weighted": 0.9525,
+        "recall_weighted": 0.95,
+        "f1_weighted": 0.9504,
+        "roc_auc": 0.9689
+      },
+      "Random Forest": {
+        "model": "Random Forest",
+        "accuracy": 0.955,
+        "precision_weighted": 0.9561,
+        "recall_weighted": 0.955,
+        "f1_weighted": 0.9555,
+        "roc_auc": 0.9967
+      },
+      "XGBoost": {
+        "model": "XGBoost",
+        "accuracy": 0.97,
+        "precision_weighted": 0.9705,
+        "recall_weighted": 0.97,
+        "f1_weighted": 0.97,
+        "roc_auc": 0.9985
+      }
+    },
+    "score_prediction": {
+      "Random Forest Regressor": {
+        "model": "Random Forest Regressor",
+        "mae": 3.4615,
+        "rmse": 4.2255,
+        "r2": 0.9108
+      },
+      "XGBoost Regressor": {
+        "model": "XGBoost Regressor",
+        "mae": 3.8384,
+        "rmse": 4.7733,
+        "r2": 0.8862
+      }
+    },
+    "pass_fail_classification": {
+      "Logistic Regression": {
+        "model": "Logistic Regression",
+        "accuracy": 0.99,
+        "precision_weighted": 0.9949,
+        "recall_weighted": 0.9949,
+        "f1_weighted": 0.9949,
+        "roc_auc": 0.9962
+      },
+      "Random Forest": {
+        "model": "Random Forest",
+        "accuracy": 0.99,
+        "precision_weighted": 0.9899,
+        "recall_weighted": 1.0,
+        "f1_weighted": 0.9949,
+        "roc_auc": 0.9943
+      },
+      "XGBoost": {
+        "model": "XGBoost",
+        "accuracy": 0.99,
+        "precision_weighted": 0.9949,
+        "recall_weighted": 0.9949,
+        "f1_weighted": 0.9949,
+        "roc_auc": 0.9987
+      }
+    }
+  }
+}
